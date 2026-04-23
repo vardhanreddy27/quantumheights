@@ -43,10 +43,13 @@ function Achievements() {
             <div key={index} className="group relative">
               {/* Main Image Container */}
               <div className="relative h-[400px] overflow-hidden rounded-[2rem] sm:h-[440px] sm:rounded-[2.2rem] md:h-[460px] lg:h-[480px] lg:rounded-[2.5rem]">
-                <img
+                <Image
                   src={member.image}
-                  alt={member.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  alt={member.name + ' - Quantum Heights School Leadership'}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={index < 3}
                 />
                 
                 {/* Floating Info Card (Bottom of Image) */}
@@ -67,9 +70,11 @@ function Achievements() {
                   {/* Signature nested inside the card */}
                   <div className="mt-4 flex items-center justify-between border-t border-slate-50 pt-3">
                     <span className="text-[9px] uppercase tracking-tighter text-slate-400">Verified Professional</span>
-                    <img 
-                      src={member.signature} 
-                      alt="Signature" 
+                    <Image
+                      src={member.signature}
+                      alt={member.name + ' signature - Quantum Heights School'}
+                      width={56}
+                      height={56}
                       className="h-14 w-auto object-contain opacity-70 contrast-125 grayscale"
                     />
                   </div>
