@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
 import Marquee from "./Marquee";
 import { cn } from "../utils/cn"; // Importing the `cn` function
 
@@ -53,20 +54,14 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4 m-3",
-        // light styles
-        "border-gray-950/[.1] bg-white hover:bg-gray-950/[.05]", 
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-white dark:hover:bg-gray-50/[.15]", 
+        "relative w-64 overflow-hidden rounded-xl border p-4 m-3 border-gray-950/[.1] bg-white",
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <Image className="rounded-full" width={32} height={32} alt="" src={img} />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          <figcaption className="text-sm font-medium">{name}</figcaption>
+          <p className="text-xs font-medium text-slate-500">{username}</p>
         </div>
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
@@ -75,42 +70,19 @@ const ReviewCard = ({
 };
 
 const MarqueeDemo = () => {
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
-
   return (
-    <div className="relative bg-cyan-500 flex h-full w-full flex-col items-center justify-center overflow-hidden py-10">
-      <h1 className="pb-5 text-4xl font-bold  ">Registered</h1>
-      <Marquee
-        className="[--duration:20s]"
-        style={{ animationPlayState: hovered ? 'paused' : 'running' }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-cyan-500 py-10">
+      <h1 className="pb-5 text-4xl font-bold">Registered</h1>
+      <Marquee className="justify-center">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee
-        reverse
-        className="[--duration:20s]"
-        style={{ animationPlayState: hovered ? 'paused' : 'running' }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <Marquee reverse className="justify-center">
         {secondRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r   dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l   dark:from-background"></div>
     </div>
   );
 };

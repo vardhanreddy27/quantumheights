@@ -12,7 +12,7 @@ export default function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden p-2",
+        "flex flex-wrap gap-3 p-2",
         {
           "flex-row": !vertical,
           "flex-col": vertical,
@@ -26,9 +26,10 @@ export default function Marquee({
           <div
             key={i}
             className={cn("flex shrink-0 justify-around", {
-              "animate-marquee": !vertical,
-              "animate-marquee-vertical": vertical,
-              "reverse-animation": reverse,
+              "flex-row": !vertical,
+              "flex-col": vertical,
+              "flex-row-reverse": reverse && !vertical,
+              "flex-col-reverse": reverse && vertical,
             })}
           >
             {children}

@@ -62,7 +62,7 @@ function Signup() {
           </form>
           <div className="text-center mt-4">
             <span className="text-sm text-gray-600">Already a user? </span>
-            <Link href="/Login" className="text-sm text-cyan-600 hover:text-cyan-800">
+            <Link href="/login" className="text-sm text-cyan-600 hover:text-cyan-800">
               Login
             </Link>
           </div>

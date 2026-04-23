@@ -42,7 +42,7 @@ function Login() {
           </form>
           <div className="text-center mt-4">
             <span className="text-sm text-gray-600">Need an account? </span>
-            <Link href="/Signup" className="text-sm text-cyan-600 hover:text-cyan-800">
+            <Link href="/signup" className="text-sm text-cyan-600 hover:text-cyan-800">
               Sign Up
             </Link>
           </div>
