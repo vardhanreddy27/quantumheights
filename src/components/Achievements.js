@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { FaLinkedinIn } from 'react-icons/fa';
 
 const achievementData = [
